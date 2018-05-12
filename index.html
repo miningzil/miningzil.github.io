@@ -8,18 +8,12 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
   <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,600'>
 
-  <script language="javascript">
-  // Enforce SSL
-  (function (root) {
-    "use strict";
-    var h = root ? root.location.hostname : "",
-    p = root ? root.location.protocol : "";
-    if ("http:" === p && !(/^(localhost|127.0.0.1)/).test(h)) {
-      root.location.protocol = "https:";
-    }
-  }
-  ("undefined" !== typeof window ? window : this));
-</script>
+<script>
+  var loc = window.location.href+'';
+if (loc.indexOf('http://')==0){
+    window.location.href = loc.replace('http://','https://');
+}
+  </script>
   
 <style type="text/css">
 body {
