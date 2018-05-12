@@ -217,7 +217,40 @@ Q4 2018: Anchor Dapp release
 
 <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 <script src='http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.5/waypoints.min.js'></script>
-<script src="js/index.js"></script>
+<script>
+  
+(function($) {
+  
+  var bottomOffset = 150;
+  
+  // Do our DOM lookups beforehand
+  var container = $("article");
+  
+  // Scrolling into top of article
+  container.waypoint({
+    handler: whenTopOfSection
+  });
+  
+  // Scrolling into bottom of article
+  container.waypoint({
+    offset: bottomSectionOffset,
+    handler: whenBottomOfSection
+  });
+  
+  function bottomSectionOffset() {
+    return -($(this).height() - bottomOffset);
+  }
+  
+  function whenTopOfSection(direction) {
+    $(this).toggleClass('sticky', direction != 'up')
+  }
+  
+  function whenBottomOfSection(direction) {
+    $(this).toggleClass('hide', direction != 'up')
+  }
+
+})(jQuery);
+</script>
 
 </body>
 </html>
